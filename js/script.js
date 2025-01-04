@@ -1,51 +1,45 @@
-const canvas = document.getElementById("chessboardCanvas");
-const ctx = canvas.getContext("2d");
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+const loader = new THREE.TextureLoader();
+const blackTexture = loader.load('textures/black_marble.jpg');
+const whiteTexture = loader.load('textures/white_marble.jpg');
 
-const squareSize = 50;
-let isDigitalizing = false;
+const tileSize = 1;
+const boardSize = 8;
 
-function drawChessboard() {
-  for (let y = 0; y < canvas.height; y += squareSize) {
-    for (let x = 0; x < canvas.width; x += squareSize) {
-      ctx.fillStyle = (x / squareSize + y / squareSize) % 2 === 0 ? "#000" : "#fff";
-      ctx.fillRect(x, y, squareSize, squareSize);
-    }
+for (let row = 0; row < boardSize; row++) {
+  for (let col = 0; col < boardSize; col++) {
+    const material = new THREE.MeshStandardMaterial({
+      map: (row + col) % 2 === 0 ? blackTexture : whiteTexture,
+      roughness: 0.5,
+      metalness: 0.3
+    });
+    const geometry = new THREE.BoxGeometry(tileSize, 0.1, tileSize);
+    const tile = new THREE.Mesh(geometry, material);
+    tile.position.set((col - boardSize / 2) * tileSize, 0, (row - boardSize / 2) * tileSize);
+    scene.add(tile);
   }
 }
 
-function digitalizeEffect() {
-  const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-  const data = imageData.data;
+const ambientLight = new THREE.AmbientLight(0x404040); // Soft white light
+scene.add(ambientLight);
 
-  for (let i = 0; i < data.length; i += 4) {
-    data[i] = data[i] * Math.random(); // Red
-    data[i + 1] = data[i + 1] * Math.random(); // Green
-    data[i + 2] = data[i + 2] * Math.random(); // Blue
-  }
+const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
+directionalLight.position.set(0, 1, 0); // Light from above
+scene.add(directionalLight);
 
-  ctx.putImageData(imageData, 0, 0);
-}
+const light = new THREE.PointLight(0xffffff, 1, 100);
+light.position.set(5, 10, 5);
+scene.add(light);
 
-function animate() {
-  drawChessboard();
+camera.position.set(-5, 5, 10); // Position the camera
+camera.lookAt(0, 0, 0); // Look at the center of the board
+renderer.render(scene, camera);
 
-  if (isDigitalizing) {
-    digitalizeEffect();
-  }
-
-  requestAnimationFrame(animate);
-}
-
-canvas.addEventListener("click", () => {
-  isDigitalizing = true;
-
-  setTimeout(() => {
-    isDigitalizing = false;
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-  }, 2000);
-});
-
-animate();
+// Use renderer's `toDataURL` method to capture the rendered image
+const imgData = renderer.domElement.toDataURL();
+document.body.removeChild(renderer.domElement); // Clean up after capturing the image

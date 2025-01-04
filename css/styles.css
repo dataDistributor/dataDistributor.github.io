@@ -4,6 +4,9 @@ body {
   padding: 0;
   background-color: #f4f4f4;
   color: #333;
+  overflow: hidden;
+  background: url('path/to/chessboard.jpg') no-repeat left;
+  background-size: 50% 100%;
 }
 
 header {
@@ -13,6 +16,8 @@ header {
   padding: 20px;
   background-color: #282828;
   color: #fff;
+  position: relative;
+  z-index: 1;
 }
 
 .logo {
@@ -26,13 +31,23 @@ nav ul {
   gap: 20px;
 }
 
-nav ul li a {
+nav ul li {
+  position: relative;
+  display: inline-block;
+}
+
+nav ul li a,
+.dark-mode-button {
   color: #fff;
   text-decoration: none;
   font-size: 18px;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
-nav ul li a:hover {
+nav ul li a:hover,
+.dark-mode-button:hover {
   text-decoration: underline;
 }
 
@@ -41,6 +56,10 @@ footer {
   background-color: #282828;
   color: #fff;
   text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 1;
 }
 
 footer .social-media-icons {
@@ -53,109 +72,4 @@ footer .social-media-icons {
 footer .social-media-icons li a {
   color: #fff;
   font-size: 24px;
-}
-
-/* Homepage styles */
-.chessboard-animation {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
-}
-
-#chessboardCanvas {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
-
-.scroll-prompt {
-  text-align: center;
-  font-size: 18px;
-  margin-top: 20px;
-}
-
-/* Projects page styles */
-.projects {
-  padding: 20px;
-}
-
-.project-card {
-  display: flex;
-  gap: 20px;
-  padding: 20px;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  margin-bottom: 20px;
-  transition: transform 0.3s ease;
-}
-
-.project-card:hover {
-  transform: translateY(-10px);
-}
-
-.project-logo {
-  width: 50px;
-  height: 50px;
-  background: #ccc;
-}
-
-.project-details h3 {
-  margin: 0;
-}
-
-.project-details a {
-  color: #007BFF;
-  text-decoration: none;
-}
-
-.project-details a:hover {
-  text-decoration: underline;
-}
-
-/* About Me page styles */
-.intro {
-  padding: 20px;
-}
-
-.timeline,
-.skills {
-  padding: 20px;
-}
-
-.resume-link {
-  display: block;
-  text-align: center;
-  padding: 10px;
-  margin: 20px auto;
-  width: 200px;
-  background-color: #007BFF;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 8px;
-}
-
-.resume-link:hover {
-  background-color: #0056b3;
-}
-
-/* Art Room page styles */
-.art-room {
-  padding: 20px;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 20px;
-}
-
-.art-item img {
-  width: 100%;
-  border-radius: 8px;
-}
-
-.art-item p {
-  text-align: center;
-  font-size: 16px;
-  color: #666;
 }
