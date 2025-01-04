@@ -3,32 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Homepage</title>
+  <title>Projects</title>
   <link rel="stylesheet" href="css/styles.css">
   <!-- Optional for dark mode -->
   <link rel="stylesheet" href="css/dark-mode.css">
   <script src="js/dark-mode.js" defer></script>
 </head>
 <body>
-  <!-- Header -->
   <header>
     <div class="logo">My Logo</div>
     <nav>
       <ul>
-        <li><a href="projects.html">Projects</a></li>
+        <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About Me</a></li>
         <li><a href="art-room.html">Art Room</a></li>
       </ul>
     </nav>
   </header>
-
-  <!-- Main Content -->
+  
   <main>
-    <div class="chessboard-animation"></div>
-    <div class="scroll-prompt">Scroll Down</div>
+    <section class="projects">
+      <div class="project-card">
+        <div class="project-logo">Project Logo</div>
+        <div class="project-details">
+          <h3>Project Name</h3>
+          <p>Short description of the project.</p>
+          <a href="https://github.com/yourusername/project-repo">GitHub Link</a>
+        </div>
+      </div>
+      <!-- Repeat for more projects -->
+    </section>
   </main>
-
-  <!-- Footer -->
+  
   <footer>
     <ul class="social-media-icons">
       <li><a href="https://github.com/yourusername"><i class="fab fa-github"></i></a></li>
@@ -36,6 +42,6 @@
     </ul>
   </footer>
   
-  <script src="js/scripts.js" defer></script>
+  <script src="js/scripts.js"></script>
 </body>
 </html>
