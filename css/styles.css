@@ -57,10 +57,18 @@ footer .social-media-icons li a {
 
 /* Homepage styles */
 .chessboard-animation {
-  height: 80vh;
-  background: url('images/chessboard-animation.gif') center center no-repeat;
-  background-size: cover;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
 }
+
+#chessboardCanvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 
 .scroll-prompt {
   text-align: center;
