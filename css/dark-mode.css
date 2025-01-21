@@ -1,0 +1,13 @@
+body.dark-mode {
+  background-color: #181818;
+  color: #e0e0e0;
+}
+
+header.dark-mode,
+footer.dark-mode {
+  background-color: #282828;
+}
+
+nav ul li a.dark-mode {
+  color: #e0e0e0;
+}

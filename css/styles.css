@@ -1,0 +1,75 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  color: #333;
+  overflow: hidden;
+  background: url('path/to/chessboard.jpg') no-repeat left;
+  background-size: 50% 100%;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #282828;
+  color: #fff;
+  position: relative;
+  z-index: 1;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+nav ul li {
+  position: relative;
+  display: inline-block;
+}
+
+nav ul li a,
+.dark-mode-button {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+nav ul li a:hover,
+.dark-mode-button:hover {
+  text-decoration: underline;
+}
+
+footer {
+  padding: 20px;
+  background-color: #282828;
+  color: #fff;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+footer .social-media-icons {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+footer .social-media-icons li a {
+  color: #fff;
+  font-size: 24px;
+}
