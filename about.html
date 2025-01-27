@@ -3,6 +3,92 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Homepage</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.110.0/examples/js/controls/OrbitControls.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background-color: black; /* Set background color to black */
+    }
+    canvas {
+      display: block;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1; /* Ensure canvas is behind the content */
+      width: 100%;
+      height: 100%;
+    }
+    header {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      background: none; /* Remove banner background */
+      color: #fff;
+    }
+    nav ul {
+      list-style: none; /* Remove default bullet points */
+      display: flex;
+      gap: 20px;
+      padding: 0; /* Remove default padding */
+    }
+    nav ul li a, .dark-mode-button {
+      color: #fff;
+      text-decoration: none;
+      font-size: 18px;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+    footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      padding: 20px;
+      background-color: #282828;
+      color: #fff;
+      text-align: center;
+      z-index: 1;
+    }
+    footer .social-media-icons {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 0; /* Remove default padding */
+    }
+    footer .social-media-icons li a {
+      color: #fff;
+      font-size: 24px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Welcome</div>
+    <nav>
+      <ul>
+        <li><button id="dark-mode-toggle" class="dark-mode-button"><i class="fas fa-moon"></i></button></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="about.html">About Me</a></li>
+        <li><a href="art-room.html">Art Room</a></li>
+      </ul>
+    </nav>
+  </header>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Me</title>
   <link rel="stylesheet" href="css/styles.css">
   <!-- Optional for dark mode -->
