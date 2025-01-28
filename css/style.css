@@ -5,19 +5,27 @@ body {
   background-color: #000;
   color: #fff;
   font-family: 'Arial', sans-serif;
+  transition: background-color 0.3s, color 0.3s;
 }
 
-canvas {
+/* Three.js background (index page only) */
+.index-page canvas {
   position: fixed;
   top: 0;
   left: 0;
   z-index: -1;
 }
 
+/* Non-index pages background */
+body:not(.index-page) {
+  background: #0a0a0a;
+}
+
 header {
   position: relative;
   padding: 1rem 2rem;
   background: rgba(0, 0, 0, 0.5);
+  transition: background 0.3s;
 }
 
 .logo {
@@ -43,7 +51,7 @@ nav a:hover {
   opacity: 0.8;
 }
 
-.active {
+nav a.active {
   border-bottom: 2px solid #fff;
 }
 
@@ -54,6 +62,7 @@ nav a:hover {
   padding: 2rem;
   background: rgba(0, 0, 0, 0.7);
   border-radius: 8px;
+  transition: background 0.3s;
 }
 
 footer {
@@ -62,6 +71,7 @@ footer {
   width: 100%;
   padding: 1rem;
   background: rgba(0, 0, 0, 0.7);
+  transition: background 0.3s;
 }
 
 .social-media-icons {
@@ -69,6 +79,22 @@ footer {
   justify-content: center;
   gap: 1.5rem;
   padding: 0;
+}
+
+/* Dark Mode Styles */
+body.light-mode {
+  background: #f0f0f0 !important;
+  color: #333;
+}
+
+body.light-mode .content-overlay,
+body.light-mode header,
+body.light-mode footer {
+  background: rgba(255, 255, 255, 0.9) !important;
+}
+
+body.light-mode nav a {
+  color: #333;
 }
 
 /* Mobile Responsive */
