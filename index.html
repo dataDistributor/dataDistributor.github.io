@@ -3,92 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Homepage</title>
+  <title>dataDistributor - Home</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/three@0.110.0/examples/js/controls/OrbitControls.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-  <style>
-    body {
-      margin: 0;
-      overflow: hidden;
-      background-color: black; /* Set background color to black */
-    }
-    canvas {
-      display: block;
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: -1; /* Ensure canvas is behind the content */
-      width: 100%;
-      height: 100%;
-    }
-    header {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px;
-      background: none; /* Remove banner background */
-      color: #fff;
-    }
-    nav ul {
-      list-style: none; /* Remove default bullet points */
-      display: flex;
-      gap: 20px;
-      padding: 0; /* Remove default padding */
-    }
-    nav ul li a, .dark-mode-button {
-      color: #fff;
-      text-decoration: none;
-      font-size: 18px;
-      background: none;
-      border: none;
-      cursor: pointer;
-    }
-    .logo {
-      font-size: 24px;
-      font-weight: bold;
-    }
-    footer {
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      padding: 20px;
-      background-color: #282828;
-      color: #fff;
-      text-align: center;
-      z-index: 1;
-    }
-    footer .social-media-icons {
-      list-style: none;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      padding: 0; /* Remove default padding */
-    }
-    footer .social-media-icons li a {
-      color: #fff;
-      font-size: 24px;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
     <div class="logo">dataDistributor</div>
-    <div class="logo">Welcome</div>
+    <div class="logo">Digital Infrastructure</div>
     <nav>
       <ul>
         <li><button id="dark-mode-toggle" class="dark-mode-button"><i class="fas fa-moon"></i></button></li>
         <li><a href="projects.html">Projects</a></li>
-        <li><a href="about.html">About Me</a></li>
+        <li><a href="about.html">About</a></li>
         <li><a href="art-room.html">Art Room</a></li>
       </ul>
     </nav>
   </header>
-  
+
   <main>
-    <!-- Add your content here -->
+    <section class="hero">
+      <h1>Data Orchestration Platform</h1>
+      <p>Enterprise-grade data distribution solutions</p>
+    </section>
   </main>
 
   <footer>
@@ -98,77 +37,6 @@
     </ul>
   </footer>
 
-  <script>
-    // Initialize the scene, camera, and renderer
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ antialias: true });
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setClearColor(0x000000); // Set canvas background to black
-    document.body.appendChild(renderer.domElement);
-
-    // Add OrbitControls for panning and zooming
-    const controls = new THREE.OrbitControls(camera, renderer.domElement);
-    controls.enableDamping = true; // Enable damping (inertia)
-    controls.dampingFactor = 0.25;
-    controls.screenSpacePanning = false; // Enable panning in screen space
-    controls.maxPolarAngle = Math.PI / 2; // Restrict vertical panning
-    controls.minDistance = 5; // Set minimum and maximum distance to the current minimum distance
-    controls.maxDistance = 5;
-
-    // Load textures
-    const loader = new THREE.TextureLoader();
-    const blackTexture = loader.load('textures/black-marble.jpg');
-    const whiteTexture = loader.load('textures/white-marble.jpg');
-
-    // Create chessboard tiles
-    const tileSize = 1.01; // Slightly increase tile size to cover gaps
-    const boardSize = 8;
-
-    for (let row = 0; row < boardSize; row++) {
-      for (let col = 0; col < boardSize; col++) {
-        const material = new THREE.MeshStandardMaterial({
-          map: (row + col) % 2 === 0 ? blackTexture : whiteTexture,
-          roughness: 0.5,
-          metalness: 0.3
-        });
-        const geometry = new THREE.BoxGeometry(tileSize, 0.1, tileSize);
-        const tile = new THREE.Mesh(geometry, material);
-        tile.position.set((col - boardSize / 2) * tileSize, 0, (row - boardSize / 2) * tileSize);
-        scene.add(tile);
-      }
-    }
-
-    // Add lighting
-    const ambientLight = new THREE.AmbientLight(0x404040);
-    scene.add(ambientLight);
-
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
-    directionalLight.position.set(0, 1, 0);
-    scene.add(directionalLight);
-
-    const pointLight = new THREE.PointLight(0xffffff, 1);
-    pointLight.position.set(5, 10, 5);
-    scene.add(pointLight);
-
-    // Position the camera
-    camera.position.set(-5, 5, 10);
-    camera.lookAt(0, 0, 0);
-
-    // Handle window resize
-    window.addEventListener('resize', () => {
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
-    });
-
-    // Animation loop
-    function animate() {
-      requestAnimationFrame(animate);
-      controls.update(); // Update controls
-      renderer.render(scene, camera);
-    }
-    animate();
-  </script>
+  <script src="threejs-config.js"></script>
 </body>
 </html>

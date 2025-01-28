@@ -1,33 +1,43 @@
-<!-- Create proper structure if file doesn't exist -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <head>
-    <!-- Other meta tags -->
-    <link rel="stylesheet" href="style.css">
-</head></head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>dataDistributor - Projects</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.110.0/examples/js/controls/OrbitControls.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
 <body>
-    <nav class="navbar">
-        <a href="index.html">Home</a>
-        <a href="projects.html" class="active">Projects</a>
-        <a href="art-room.html">Art Room</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
+  <header>
+    <div class="logo">dataDistributor</div>
+    <div class="logo">Innovation Hub</div>
+    <nav>
+      <ul>
+        <li><button id="dark-mode-toggle" class="dark-mode-button"><i class="fas fa-moon"></i></button></li>
+        <li><a href="projects.html" class="active">Projects</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="art-room.html">Art Room</a></li>
+      </ul>
     </nav>
+  </header>
 
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Our Projects</h1>
-            <p>Innovative Data Solutions in Action</p>
-        </div>
+  <main>
+    <section class="project-grid">
+      <div class="project-card">
+        <h3>Data Pipeline Architecture</h3>
+      </div>
     </section>
+  </main>
 
-    <section class="features">
-        <div class="grid-container">
-            <!-- Project cards here -->
-        </div>
-    </section>
+  <footer>
+    <ul class="social-media-icons">
+      <li><a href="https://github.com/dataDistributor"><i class="fab fa-github"></i></a></li>
+      <li><a href="https://www.linkedin.com/in/yourusername/"><i class="fab fa-linkedin"></i></a></li>
+    </ul>
+  </footer>
 
-    <!-- Same footer as index.html -->
+  <script src="threejs-config.js"></script>
 </body>
 </html>
