@@ -7,8 +7,8 @@
 
 body {
   font-family: 'Arial', sans-serif;
-  background: #121212;
-  color: #ffffff;
+  background: #000000; /* Black background */
+  color: #ffffff; /* White text */
   line-height: 1.6;
 }
 
@@ -20,20 +20,25 @@ body {
 
 /* Header */
 .header {
-  background: #1f1f1f;
-  padding: 20px 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  background: #000000; /* Black header */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  border-bottom: 1px solid #ffffff;
+  padding: 10px 0;
 }
 
 .logo {
   font-size: 1.5rem;
-  color: #00ffcc;
+  color: #ffffff; /* White logo */
 }
 
 .navbar {
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .nav-links {
@@ -43,22 +48,24 @@ body {
 }
 
 .nav-links a {
-  color: #ffffff;
+  color: #ffffff; /* White links */
   text-decoration: none;
   font-size: 1rem;
 }
 
 .nav-links a.active {
-  color: #00ffcc;
-  border-bottom: 2px solid #00ffcc;
+  border-bottom: 2px solid #ffffff; /* Highlight active link */
+}
+
+.nav-links a:hover {
+  color: #00ffcc; /* Accent color on hover */
 }
 
 /* Hero Section */
 .hero {
-  background: linear-gradient(135deg, #00ffcc, #1f1f1f);
   text-align: center;
+  padding: 120px 20px; /* Adjust padding for fixed header */
   color: #ffffff;
-  padding: 100px 20px;
 }
 
 .hero h1 {
@@ -72,17 +79,22 @@ body {
 
 .hero .btn {
   background: #ffffff;
-  color: #121212;
+  color: #000000;
   padding: 10px 20px;
   text-decoration: none;
   border-radius: 5px;
   font-size: 1rem;
 }
 
+.hero .btn:hover {
+  background: #00ffcc; /* Accent color on hover */
+  color: #000000;
+}
+
 /* Features Section */
 .features {
   padding: 50px 20px;
-  background: #1f1f1f;
+  background: #111111; /* Slightly lighter black */
 }
 
 .features h2 {
@@ -98,7 +110,7 @@ body {
 }
 
 .feature-card {
-  background: #121212;
+  background: #000000; /* Black card background */
   padding: 20px;
   border-radius: 10px;
   text-align: center;
@@ -110,9 +122,13 @@ body {
   color: #00ffcc;
 }
 
+.feature-card p {
+  color: #ffffff; /* White text for card descriptions */
+}
+
 /* Footer */
 footer {
-  background: #1f1f1f;
+  background: #000000; /* Black footer */
   text-align: center;
   padding: 20px 0;
 }
@@ -124,7 +140,11 @@ footer {
 }
 
 .social-links a {
-  color: #00ffcc;
+  color: #00ffcc; /* Accent color for social links */
   text-decoration: none;
   margin-left: 10px;
+}
+
+.social-links a:hover {
+  color: #ffffff; /* White on hover */
 }
