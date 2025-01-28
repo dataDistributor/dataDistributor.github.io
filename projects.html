@@ -1,52 +1,33 @@
+<!-- Create proper structure if file doesn't exist -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projects</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-  <style>
-    body {
-      margin: 0;
-      overflow: hidden;
-      background-color: black;
-      color: white;
-    }
-    header, footer {
-      position: relative;
-      z-index: 1;
-    }
-    header, nav ul, footer ul {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    nav ul li a, .dark-mode-button {
-      color: white;
-      text-decoration: none;
-    }
-  </style>
-</head>
+  <head>
+    <!-- Other meta tags -->
+    <link rel="stylesheet" href="style.css">
+</head></head>
 <body>
-  <header>
-    <div class="logo">dataDistributor</div>
-    <nav>
-      <ul>
-        <li><button id="dark-mode-toggle" class="dark-mode-button"><i class="fas fa-moon"></i></button></li>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About Me</a></li>
-        <li><a href="art-room.html">Art Room</a></li>
-      </ul>
+    <nav class="navbar">
+        <a href="index.html">Home</a>
+        <a href="projects.html" class="active">Projects</a>
+        <a href="art-room.html">Art Room</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
     </nav>
-  </header>
-  <main>
-    <h1>My Projects</h1>
-    <p>Details about projects will go here...</p>
-  </main>
-  <footer>
-    <ul>
-      <li><a href="https://github.com/dataDistributor"><i class="fab fa-github"></i></a></li>
-    </ul>
-  </footer>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Our Projects</h1>
+            <p>Innovative Data Solutions in Action</p>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="grid-container">
+            <!-- Project cards here -->
+        </div>
+    </section>
+
+    <!-- Same footer as index.html -->
 </body>
 </html>
