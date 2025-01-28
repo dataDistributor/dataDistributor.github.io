@@ -1,117 +1,62 @@
-/* Base Styles */
+/* General Reset */
 body {
   margin: 0;
-  overflow: auto;
-  background-color: #000;
-  color: #fff;
   font-family: 'Arial', sans-serif;
-  transition: background-color 0.3s, color 0.3s;
+  background-color: #121212;
+  color: #ffffff;
 }
 
-/* Three.js background (index page only) */
-.index-page canvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: -1;
-}
-
-/* Non-index pages background */
-body:not(.index-page) {
-  background: #0a0a0a;
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
 header {
-  position: relative;
-  padding: 1rem 2rem;
-  background: rgba(0, 0, 0, 0.5);
-  transition: background 0.3s;
+  background: #1f1f1f;
+  padding: 10px 0;
 }
 
-.logo {
-  font-size: 1.5rem;
-  font-weight: bold;
+header h1 {
+  color: #00ffcc;
 }
 
 nav ul {
-  display: flex;
-  gap: 1.5rem;
-  margin: 0;
-  padding: 0;
   list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
 }
 
 nav a {
-  color: #fff;
+  color: #ffffff;
   text-decoration: none;
-  transition: opacity 0.3s;
-}
-
-nav a:hover {
-  opacity: 0.8;
 }
 
 nav a.active {
-  border-bottom: 2px solid #fff;
+  border-bottom: 2px solid #00ffcc;
 }
 
-.content-overlay {
-  position: relative;
-  max-width: 1200px;
-  margin: 5rem auto;
-  padding: 2rem;
-  background: rgba(0, 0, 0, 0.7);
-  border-radius: 8px;
-  transition: background 0.3s;
+.hero {
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.hero h2 {
+  color: #00ffcc;
+}
+
+.btn-primary {
+  display: inline-block;
+  background: #00ffcc;
+  color: #121212;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
 }
 
 footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  padding: 1rem;
-  background: rgba(0, 0, 0, 0.7);
-  transition: background 0.3s;
-}
-
-.social-media-icons {
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  padding: 0;
-}
-
-/* Dark Mode Styles */
-body.light-mode {
-  background: #f0f0f0 !important;
-  color: #333;
-}
-
-body.light-mode .content-overlay,
-body.light-mode header,
-body.light-mode footer {
-  background: rgba(255, 255, 255, 0.9) !important;
-}
-
-body.light-mode nav a {
-  color: #333;
-}
-
-/* Mobile Responsive */
-@media (max-width: 768px) {
-  header {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-  
-  nav ul {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  
-  .content-overlay {
-    margin: 2rem;
-    padding: 1rem;
-  }
+  background: #1f1f1f;
+  text-align: center;
+  padding: 20px 0;
 }
