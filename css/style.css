@@ -1,9 +1,15 @@
 /* General Reset */
-body {
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
   font-family: 'Arial', sans-serif;
-  background-color: #121212;
+  background: #121212;
   color: #ffffff;
+  line-height: 1.6;
 }
 
 .container {
@@ -12,51 +18,113 @@ body {
   padding: 20px;
 }
 
-header {
+/* Header */
+.header {
   background: #1f1f1f;
-  padding: 10px 0;
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-header h1 {
+.logo {
+  font-size: 1.5rem;
   color: #00ffcc;
 }
 
-nav ul {
-  list-style: none;
-  padding: 0;
+.navbar {
   display: flex;
-  justify-content: space-around;
 }
 
-nav a {
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
   color: #ffffff;
   text-decoration: none;
+  font-size: 1rem;
 }
 
-nav a.active {
+.nav-links a.active {
+  color: #00ffcc;
   border-bottom: 2px solid #00ffcc;
 }
 
+/* Hero Section */
 .hero {
+  background: linear-gradient(135deg, #00ffcc, #1f1f1f);
   text-align: center;
+  color: #ffffff;
   padding: 100px 20px;
 }
 
-.hero h2 {
-  color: #00ffcc;
+.hero h1 {
+  font-size: 2.5rem;
 }
 
-.btn-primary {
-  display: inline-block;
-  background: #00ffcc;
+.hero p {
+  font-size: 1.2rem;
+  margin: 20px 0;
+}
+
+.hero .btn {
+  background: #ffffff;
   color: #121212;
   padding: 10px 20px;
   text-decoration: none;
   border-radius: 5px;
+  font-size: 1rem;
 }
 
+/* Features Section */
+.features {
+  padding: 50px 20px;
+  background: #1f1f1f;
+}
+
+.features h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #00ffcc;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.feature-card {
+  background: #121212;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  border: 1px solid #00ffcc;
+}
+
+.feature-card h3 {
+  margin-bottom: 10px;
+  color: #00ffcc;
+}
+
+/* Footer */
 footer {
   background: #1f1f1f;
   text-align: center;
   padding: 20px 0;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.social-links a {
+  color: #00ffcc;
+  text-decoration: none;
+  margin-left: 10px;
 }
