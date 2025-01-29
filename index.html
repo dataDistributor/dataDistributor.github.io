@@ -3,26 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Website</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Data Distributor | Web3 Portfolio</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 </head>
 <body>
-    <header>
-        <h1>Welcome to My Website</h1>
-        <nav>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <p>This is a simple website hosted on GitHub.</p>
-    </main>
-    <footer>
-        <p>&copy; 2025 My Website</p>
+    <!-- Navigation -->
+    <nav class="glass-nav">
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="about.html">About</a>
+            <a href="projects.html">Projects</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <button class="theme-toggle" id="themeToggle">
+            <span class="dark-icon">🌙</span>
+            <span class="light-icon">☀️</span>
+        </button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div id="particles-js"></div>
+        <div class="hero-content">
+            <h1 class="gradient-text">Building Decentralized Futures</h1>
+            <p class="typewriter">Smart Contract Developer & Blockchain Architect</p>
+        </div>
+    </section>
+
+    <!-- Social Footer -->
+    <footer class="social-footer">
+        <a href="[Your GitHub]" target="_blank" class="social-icon">
+            <img src="assets/github-icon.svg" alt="GitHub">
+        </a>
+        <a href="[Your LinkedIn]" target="_blank" class="social-icon">
+            <img src="assets/linkedin-icon.svg" alt="LinkedIn">
+        </a>
     </footer>
-    <script src="script.js"></script>
+
+    <script src="js/theme.js"></script>
+    <script>
+        particlesJS.load('particles-js', 'js/particles.json');
+    </script>
 </body>
 </html>

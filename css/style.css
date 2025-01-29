@@ -1,34 +1,48 @@
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  text-align: center;
+:root {
+  --primary: #4F46E5;
+  --secondary: #10B981;
+  --bg: #0F172A;
+  --surface: rgba(255, 255, 255, 0.05);
+  --text: #F8FAFC;
 }
 
-header {
-  background: #333;
-  color: white;
-  padding: 1em 0;
+[data-theme="light"] {
+  --bg: #F1F5F9;
+  --surface: rgba(0, 0, 0, 0.05);
+  --text: #0F172A;
 }
 
-nav ul {
-  list-style: none;
-  padding: 0;
+.glass-nav {
+  backdrop-filter: blur(16px);
+  background: var(--surface);
+  border-radius: 16px;
+  padding: 1rem 2rem;
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  display: flex;
+  gap: 1.5rem;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
 
-nav ul li {
-  display: inline;
-  margin: 0 15px;
+.gradient-text {
+  background: linear-gradient(45deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
-nav ul li a {
-  color: white;
-  text-decoration: none;
+.typewriter {
+  border-right: 2px solid var(--text);
+  animation: typing 3s steps(40), blink-caret 0.75s step-end infinite;
 }
 
-footer {
-  margin-top: 20px;
-  padding: 10px;
-  background: #222;
-  color: white;
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: var(--text) }
 }
