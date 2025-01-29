@@ -1,37 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Us - Web3 Data Solutions</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
+  <title>Data Distributor | Web3 Portfolio</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script></head>
 <body>
-  <header>
-    <div class="container">
-      <h1>Web3 Data Solutions</h1>
-      <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="projects.html">Projects</a></li>
-          <li><a href="about.html" class="active">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+    <div id="scene-container"></div>
+    <nav class="nav-banner">
+      <nav class="glass-nav">
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="about.html">About</a>
+            <a href="projects.html">Projects</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <button class="theme-toggle" id="themeToggle">
+            <span class="dark-icon">🌙</span>
+            <span class="light-icon">☀️</span>
+        </button>
+    </nav>
+    </nav>
 
-  <main>
-    <section class="about">
-      <h2>About Us</h2>
-      <p>Web3 Data Solutions is dedicated to providing decentralized infrastructure to power the future of enterprise-grade applications.</p>
-    </section>
-  </main>
+    <main class="about-content">
+        <h2 class="gradient-text">Blockchain Architect</h2>
+        <div class="glass-panel">
+            <p>With 5+ years in Web3 development, I specialize in:</p>
+            <ul class="skill-list">
+                <li>Smart Contract Development (Solidity/Rust)</li>
+                <li>Decentralized Application Architecture</li>
+                <li>Layer 2 Scaling Solutions</li>
+                <li>DeFi Protocol Design</li>
+            </ul>
+        </div>
+    </main>
 
-  <footer>
-    <div class="container">
-      <p>&copy; 2025 Web3 Data Solutions. All rights reserved.</p>
-    </div>
+    <footer class="social-footer">
+      <a href="https://github.com/dataDistributor" target="_blank" class="social-icon">
+          <img src="assets/github-icon.svg" alt="GitHub">
+      </a>
+      <a href="https://www.linkedin.com/in/kyle-agostinelli-075329237/" target="_blank" class="social-icon">
+          <img src="assets/linkedin-icon.svg" alt="LinkedIn">
+      </a>
   </footer>
+  
+    <script type="module" src="js/threeScene.js"></script>
 </body>
 </html>
