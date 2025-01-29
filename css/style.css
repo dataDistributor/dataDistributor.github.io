@@ -1,42 +1,174 @@
-/* Add these updates to your existing CSS */
+/* Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Courier New', monospace;
+}
+
+body {
+  background: #0a0a0a;
+  color: #e0e0e0;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Cyberpunk Gradient Text */
+.gradient-text {
+  background: linear-gradient(45deg, #00f7ff, #7b00ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 15px rgba(0, 247, 255, 0.5);
+}
+
+/* Navigation */
 .nav-banner {
-  background: rgba(15, 23, 42, 0.8); /* Dark base color */
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 1.5rem;
+  background: rgba(10, 10, 10, 0.95);
+  border-bottom: 1px solid #2a2a2a;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-[data-theme="light"] .nav-banner {
-  background: rgba(241, 245, 249, 0.8); /* Light base color */
+.nav-links {
+  display: flex;
+  gap: 2rem;
 }
 
-/* Theme Toggle Icons */
-.dark-icon { display: block; }
-.light-icon { display: none; }
+.nav-links a {
+  color: #e0e0e0;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
 
-[data-theme="light"] .dark-icon { display: none; }
-[data-theme="light"] .light-icon { display: block; }
+.nav-links a:hover {
+  border-color: #00f7ff;
+  box-shadow: 0 0 15px rgba(0, 247, 255, 0.3);
+}
 
-.theme-toggle i {
-  font-size: 1.2rem;
-  color: var(--text);
+/* 3D Canvas */
+#scene-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+/* Hero Section */
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 100;
+}
+
+.hero h1 {
+  font-size: 4rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Project Grid */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 4rem 2rem;
+}
+
+.project-card {
+  background: #111;
+  padding: 2rem;
+  border-radius: 8px;
+  border: 1px solid #2a2a2a;
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  border-color: #00f7ff;
+  box-shadow: 0 5px 15px rgba(0, 247, 255, 0.2);
+}
+
+/* Contact Form */
+.contact-container {
+  max-width: 600px;
+  margin: 4rem auto;
+  padding: 2rem;
+  border: 1px solid #2a2a2a;
+  border-radius: 8px;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 0.8rem;
+  background: #111;
+  border: 1px solid #2a2a2a;
+  color: #e0e0e0;
+  border-radius: 4px;
+  transition: border-color 0.3s ease;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: #00f7ff;
+  box-shadow: 0 0 10px rgba(0, 247, 255, 0.2);
+}
+
+button[type="submit"] {
+  background: #00f7ff;
+  color: #0a0a0a;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background: #7b00ff;
+  color: #e0e0e0;
 }
 
 /* Social Footer */
 .social-footer {
-  background: rgba(15, 23, 42, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 1.5rem;
 }
 
-[data-theme="light"] .social-footer {
-  background: rgba(241, 245, 249, 0.8);
-  border: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.social-icon i {
+.social-icon {
   font-size: 1.5rem;
-  color: var(--text);
+  color: #e0e0e0;
   transition: all 0.3s ease;
 }
 
-.social-icon:hover i {
-  color: var(--primary);
+.social-icon:hover {
+  color: #00f7ff;
   transform: scale(1.2);
 }

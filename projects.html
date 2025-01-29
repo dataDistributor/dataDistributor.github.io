@@ -3,44 +3,55 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projects - Web3 Data Solutions</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Data Distributor | Web3 Developer</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-  <header>
-    <div class="container">
-      <h1>Web3 Data Solutions</h1>
-      <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="projects.html" class="active">Projects</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
+  <nav class="nav-banner">
+    <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
     </div>
-  </header>
+</nav>
 
-  <main>
-    <section class="projects">
-      <h2>Our Projects</h2>
-      <div class="project-grid">
-        <div class="project-card">
-          <h3>Decentralized Identity</h3>
-          <p>Empowering users with self-sovereign identity solutions.</p>
-        </div>
-        <div class="project-card">
-          <h3>Layer 0 Infrastructure</h3>
-          <p>Building scalable and secure blockchain networks.</p>
-        </div>
-      </div>
-    </section>
-  </main>
+    <main>
+        <div class="project-grid">
+            <div class="project-card">
+                <h3 class="gradient-text">Decentralized Exchange</h3>
+                <p>AMM protocol built with Solidity and React</p>
+                <div class="tech-stack">
+                    <span>Solidity</span>
+                    <span>React</span>
+                    <span>GraphQL</span>
+                </div>
+                <a href="#" class="repo-link">View Repository →</a>
+            </div>
 
-  <footer>
-    <div class="container">
-      <p>&copy; 2025 Web3 Data Solutions. All rights reserved.</p>
-    </div>
+            <div class="project-card">
+                <h3 class="gradient-text">NFT Marketplace</h3>
+                <p>ERC-721 marketplace with lazy minting</p>
+                <div class="tech-stack">
+                    <span>IPFS</span>
+                    <span>Hardhat</span>
+                    <span>TypeScript</span>
+                </div>
+                <a href="#" class="repo-link">View Repository →</a>
+            </div>
+
+            <!-- Add more project cards -->
+        </div>
+    </main>
+
+    <footer class="social-footer">
+      <a href="https://github.com/yourusername" class="social-icon">
+          <i class="fab fa-github"></i>
+      </a>
+      <a href="https://linkedin.com/in/yourprofile" class="social-icon">
+          <i class="fab fa-linkedin"></i>
+      </a>
   </footer>
 </body>
 </html>
