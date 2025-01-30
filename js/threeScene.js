@@ -17,16 +17,18 @@ document.getElementById('scene-container').appendChild(renderer.domElement);
 
 // Chessboard Materials
 const darkMaterial = new THREE.MeshStandardMaterial({ 
-    color: 0x222222,
-    emissive: 0x111111,
-    metalness: 0.9,
-    roughness: 0.5
+    color: 0x111111,
+    emissive: 0x222222,
+    emissiveIntensity: 1.5,
+    metalness: 0.95,
+    roughness: 0.2
 });
 
 const lightMaterial = new THREE.MeshStandardMaterial({
     color: 0x00ffff,
-    emissive: 0x004444,
-    metalness: 0.95,
+    emissive: 0x008888,
+    emissiveIntensity: 2.0,
+    metalness: 0.98,
     roughness: 0.1
 });
 
@@ -47,6 +49,15 @@ for(let i = 0; i < boardSize; i++) {
     }
 }
 
+const gridHelper = new THREE.GridHelper(
+    8,          // Size of the grid (matches chessboard size)
+    8,          // Number of divisions
+    0x444444,   // Center line color (dark gray)
+    0x888888    // Grid line color (light gray)
+  );
+  gridHelper.position.y = -0.1; // Slightly below the tiles
+  scene.add(gridHelper);
+  
 // Lighting
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
 scene.add(ambientLight);
