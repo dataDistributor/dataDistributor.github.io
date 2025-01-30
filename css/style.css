@@ -1,4 +1,4 @@
-/* Base Styles */
+/* Reset & Base Styles */
 * {
   margin: 0;
   padding: 0;
@@ -9,17 +9,18 @@
 body {
   background: #0a0a0a;
   color: #e0e0e0;
-  line-height: 1.6;
+  min-height: 100vh;
   overflow-x: hidden;
 }
 
-/* Cyberpunk Gradient Text */
-.gradient-text {
-  background: linear-gradient(45deg, #00f7ff, #7b00ff);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  text-shadow: 0 0 15px rgba(0, 247, 255, 0.5);
+/* Scene Container */
+#scene-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
 }
 
 /* Navigation */
@@ -27,130 +28,56 @@ body {
   position: fixed;
   top: 0;
   width: 100%;
-  padding: 1.5rem;
-  background: rgba(10, 10, 10, 0.95);
+  padding: 2rem;
+  background: #111;
   border-bottom: 1px solid #2a2a2a;
   z-index: 1000;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.nav-links {
-  display: flex;
+  justify-content: flex-end;
   gap: 2rem;
 }
 
 .nav-links a {
   color: #e0e0e0;
   text-decoration: none;
-  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
+  padding: 0.8rem 1.5rem;
   border-radius: 4px;
   transition: all 0.3s ease;
-  border: 1px solid transparent;
 }
 
 .nav-links a:hover {
-  border-color: #00f7ff;
-  box-shadow: 0 0 15px rgba(0, 247, 255, 0.3);
-}
-
-/* 3D Canvas */
-#scene-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;  /* Changed from -1 to 0 */
+  background: rgba(0, 247, 255, 0.1);
+  box-shadow: 0 0 15px rgba(0, 247, 255, 0.2);
 }
 
 /* Hero Section */
 .hero {
+  position: relative;
+  z-index: 100;
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 2rem;
+  pointer-events: none;
 }
 
 .hero-content {
-  position: relative;
-  z-index: 100;
-  mix-blend-mode: difference; /* Creates cool text overlay effect */
+  pointer-events: auto;
 }
 
 .hero h1 {
   font-size: 4rem;
   margin-bottom: 1.5rem;
+  color: #00f7ff;
+  text-shadow: 0 0 20px rgba(0, 247, 255, 0.4);
 }
 
-/* Project Grid */
-.project-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  padding: 4rem 2rem;
-}
-
-.project-card {
-  background: #111;
-  padding: 2rem;
-  border-radius: 8px;
-  border: 1px solid #2a2a2a;
-  transition: transform 0.3s ease;
-}
-
-.project-card:hover {
-  transform: translateY(-5px);
-  border-color: #00f7ff;
-  box-shadow: 0 5px 15px rgba(0, 247, 255, 0.2);
-}
-
-/* Contact Form */
-.contact-container {
-  max-width: 600px;
-  margin: 4rem auto;
-  padding: 2rem;
-  border: 1px solid #2a2a2a;
-  border-radius: 8px;
-}
-
-.form-group {
-  margin-bottom: 1.5rem;
-}
-
-input, textarea {
-  width: 100%;
-  padding: 0.8rem;
-  background: #111;
-  border: 1px solid #2a2a2a;
-  color: #e0e0e0;
-  border-radius: 4px;
-  transition: border-color 0.3s ease;
-}
-
-input:focus, textarea:focus {
-  outline: none;
-  border-color: #00f7ff;
-  box-shadow: 0 0 10px rgba(0, 247, 255, 0.2);
-}
-
-button[type="submit"] {
-  background: #00f7ff;
-  color: #0a0a0a;
-  padding: 1rem 2rem;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: all 0.3s ease;
-}
-
-button[type="submit"]:hover {
-  background: #7b00ff;
-  color: #e0e0e0;
+.hero p {
+  font-size: 1.5rem;
+  border-right: 2px solid #00f7ff;
+  animation: typing 3s steps(40), blink-caret 0.75s step-end infinite;
 }
 
 /* Social Footer */
@@ -160,11 +87,12 @@ button[type="submit"]:hover {
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: 1.5rem;
+  gap: 2rem;
+  z-index: 1000;
 }
 
 .social-icon {
-  font-size: 1.5rem;
+  font-size: 2rem;
   color: #e0e0e0;
   transition: all 0.3s ease;
 }
@@ -172,4 +100,15 @@ button[type="submit"]:hover {
 .social-icon:hover {
   color: #00f7ff;
   transform: scale(1.2);
+}
+
+/* Animations */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: #00f7ff }
 }
