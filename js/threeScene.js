@@ -57,7 +57,7 @@ const gridHelper = new THREE.GridHelper(
   );
   gridHelper.position.y = -0.1; // Slightly below the tiles
   scene.add(gridHelper);
-  
+
 // Lighting
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
 scene.add(ambientLight);
@@ -67,13 +67,29 @@ directionalLight.position.set(5, 10, 5);
 scene.add(directionalLight);
 
 // Camera & Controls
-camera.position.set(8, 12, 8);
-camera.lookAt(0, 0, 0);
-
+// Make controls more responsive
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
-controls.dampingFactor = 0.05;
+controls.dampingFactor = 0.04;
+controls.rotateSpeed = 0.5;
+controls.screenSpacePanning = true;
 
+// Add subtle rotation when idle
+let autoRotate = true;
+const rotationSpeed = 0.2;
+
+function animate() {
+    requestAnimationFrame(animate);
+    
+    if(autoRotate && !controls.autoRotate) {
+        camera.position.x = Math.sin(Date.now() * 0.001) * 8;
+        camera.position.z = Math.cos(Date.now() * 0.001) * 8;
+        camera.lookAt(0, 0, 0);
+    }
+    
+    controls.update();
+    renderer.render(scene, camera);
+}
 // Animation Loop
 function animate() {
     requestAnimationFrame(animate);
