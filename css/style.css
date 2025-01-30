@@ -194,44 +194,68 @@ body {
 }
 
 /* Hero Section - Top Left Alignment */
+/* Hero Section - Top Left */
 .hero {
   position: absolute;
-  top: 8rem;
-  left: 2rem;
+  top: 20vh;
+  left: 5vw;
   z-index: 100;
   text-align: left;
-  padding: 1rem;
-  background: rgba(11, 11, 11, 0.7);
-  border-radius: 8px;
-  border: 1px solid rgba(0, 247, 255, 0.2);
-  backdrop-filter: blur(5px);
-  max-width: 600px;
+  max-width: 40ch;
 }
 
 .hero h1 {
-  font-size: 2.5rem;
+  font-size: 2.8rem;
   margin-bottom: 1rem;
+  line-height: 1.2;
+  background: linear-gradient(45deg, #00f7ff, #7b00ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
-.hero p {
-  font-size: 1.2rem;
-  animation: none;
-  border-right: none;
+.accent-border {
+  position: relative;
+  padding-left: 2rem;
 }
 
-/* Interactive Notice */
-.interactive-notice {
+.accent-border::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: #00f7ff;
+  box-shadow: 0 0 15px rgba(0, 247, 255, 0.3);
+}
+
+/* Interactive Cue */
+.interactive-cue {
   position: fixed;
-  bottom: 6rem;
+  bottom: 2rem;
   right: 2rem;
-  color: #00f7ff;
-  font-size: 0.9rem;
-  opacity: 0.7;
+  background: rgba(0, 247, 255, 0.1);
+  padding: 0.8rem 1.2rem;
+  border-radius: 8px;
+  border: 1px solid #00f7ff;
+  backdrop-filter: blur(5px);
   animation: pulse 2s infinite;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
 }
 
 @keyframes pulse {
-  0% { opacity: 0.3; }
-  50% { opacity: 1; }
-  100% { opacity: 0.3; }
+  0% { opacity: 0.6; transform: scale(0.98); }
+  50% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0.6; transform: scale(0.98); }
+}
+
+#scene-container:hover {
+  cursor: grab;
+}
+
+#scene-container:active {
+  cursor: grabbing;
 }

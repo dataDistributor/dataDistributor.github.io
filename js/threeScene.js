@@ -99,8 +99,13 @@ function animate() {
 animate();
 
 // Window Resize Handler
-window.addEventListener('resize', () => {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
+// Add camera movement on load
+window.addEventListener('load', () => {
+    gsap.to(camera.position, {
+        x: 8,
+        y: 12,
+        z: 8,
+        duration: 2,
+        ease: "power2.inOut"
+    });
 });
