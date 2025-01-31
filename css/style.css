@@ -1,110 +1,40 @@
-/* Base Styles */
+/* Ensure canvas visibility */
 body {
   margin: 0;
   overflow: hidden;
-  background-color: #000;
-  color: #fff;
-  font-family: 'Arial', sans-serif;
+  background: #000 !important; /* Force black background */
 }
 
 canvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 0;
-  width: 100vw;
-  height: 100vh;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  z-index: 0 !important;
 }
 
-/* Content Layers */
-header, main, footer {
+/* Content positioning */
+.content-overlay {
   position: relative;
   z-index: 1;
-}
-
-main {
-  background: transparent;
-  pointer-events: none;
-}
-
-main > * {
-  pointer-events: auto;
-}
-
-/* Loading Overlay */
-#loading-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #000;
-  z-index: 9999;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  transition: opacity 1s;
-}
-
-.loader {
-  border: 5px solid #f3f3f3;
-  border-top: 5px solid #3498db;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  animation: spin 2s linear infinite;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-/* Navigation */
-header {
-  padding: 1rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 1.5rem;
-  margin: 0;
-  padding: 0;
-}
-
-nav a {
-  color: #fff;
-  text-decoration: none;
-  transition: opacity 0.3s;
-}
-
-nav a:hover {
-  opacity: 0.8;
-}
-
-/* Content */
-.hero-container {
-  position: relative;
   max-width: 1200px;
   margin: 100px auto;
   padding: 2rem;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 8px;
 }
 
-/* Mobile Responsive */
-@media (max-width: 768px) {
-  header {
-    flex-direction: column;
-    text-align: center;
-    gap: 1rem;
-  }
-  
-  .hero-container {
-    margin: 50px auto;
-    padding: 1rem;
-  }
+.hero-image {
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+  display: block;
+  margin: 0 auto 2rem;
+  filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.1));
 }
+
+.hero-text {
+  text-align: center;
+  color: #fff;
+}
+
+/* Keep existing navigation and responsive styles */
