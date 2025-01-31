@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize loading overlay
     const loadingOverlay = document.getElementById('loading-overlay');
     
     try {
@@ -8,7 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
       const renderer = new THREE.WebGLRenderer({
         antialias: true,
-        alpha: false
+        alpha: false,
+        preserveDrawingBuffer: true
       });
   
       renderer.setSize(window.innerWidth, window.innerHeight);
@@ -22,22 +22,22 @@ document.addEventListener('DOMContentLoaded', () => {
       controls.minDistance = 5;
       controls.maxDistance = 15;
   
-      // Temporary test cube
+      // Temporary test object
       const testGeometry = new THREE.BoxGeometry(1, 1, 1);
       const testMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 });
       const testCube = new THREE.Mesh(testGeometry, testMaterial);
       scene.add(testCube);
   
-      // Chessboard setup
-      const tileSize = 1.01;
+      // Texture loading
       const loader = new THREE.TextureLoader();
       loader.crossOrigin = '';
-  
-      // Load textures with error handling
+      
       Promise.all([
         new Promise((resolve) => loader.load('textures/black-marble.jpg', resolve)),
         new Promise((resolve) => loader.load('textures/white-marble.jpg', resolve))
       ]).then(([blackTexture, whiteTexture]) => {
+        // Create chessboard
+        const tileSize = 1.01;
         for(let i = 0; i < 8; i++) {
           for(let j = 0; j < 8; j++) {
             const material = new THREE.MeshStandardMaterial({
@@ -51,10 +51,10 @@ document.addEventListener('DOMContentLoaded', () => {
             scene.add(tile);
           }
         }
-        scene.remove(testCube); // Remove temporary cube
+        scene.remove(testCube);
       }).catch((error) => {
         console.error('Texture loading failed:', error);
-        testCube.material.color.set(0x00ff00); // Change test cube color to green
+        testCube.material.color.set(0x00ff00);
       });
   
       // Lighting
@@ -88,14 +88,14 @@ document.addEventListener('DOMContentLoaded', () => {
         loadingOverlay.style.display = 'none';
       }, 1000);
   
+      // Dark mode toggle
+      document.getElementById('dark-mode-toggle').addEventListener('click', () => {
+        document.body.classList.toggle('light-mode');
+        renderer.setClearColor(document.body.classList.contains('light-mode') ? 0xffffff : 0x000000);
+      });
+  
     } catch (error) {
       console.error('Three.js initialization failed:', error);
-      loadingOverlay.innerHTML = '<p>Error initializing visualization. Please check console for details.</p>';
+      loadingOverlay.innerHTML = '<p>Error initializing visualization. Please check console.</p>';
     }
-  
-    // Dark mode toggle
-    document.getElementById('dark-mode-toggle').addEventListener('click', () => {
-      document.body.classList.toggle('light-mode');
-      renderer.setClearColor(document.body.classList.contains('light-mode') ? 0xffffff : 0x000000);
-    });
   });

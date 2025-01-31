@@ -1,8 +1,10 @@
-/* Ensure canvas visibility */
+/* Base Styles */
 body {
   margin: 0;
   overflow: hidden;
-  background: #000 !important; /* Force black background */
+  background: #000 !important;
+  color: #fff;
+  font-family: 'Courier New', monospace;
 }
 
 canvas {
@@ -10,17 +12,99 @@ canvas {
   top: 0 !important;
   left: 0 !important;
   z-index: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
 }
 
-/* Content positioning */
-.content-overlay {
+/* Content Layers */
+header, main, footer {
   position: relative;
   z-index: 1;
+}
+
+main {
+  background: transparent;
+  pointer-events: none;
+}
+
+main > * {
+  pointer-events: auto;
+}
+
+/* Loading Overlay */
+#loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 1s;
+}
+
+.loader {
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #3498db;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Navigation */
+header {
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.logo {
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  transition: opacity 0.3s;
+}
+
+nav a:hover {
+  opacity: 0.7;
+}
+
+.active {
+  border-bottom: 2px solid #fff;
+}
+
+/* Content Overlay */
+.content-overlay {
+  position: relative;
   max-width: 1200px;
   margin: 100px auto;
   padding: 2rem;
-  background: rgba(0, 0, 0, 0.7);
-  border-radius: 8px;
+  background: rgba(40, 40, 40, 0.9);
+  border-radius: 10px;
 }
 
 .hero-image {
@@ -34,7 +118,54 @@ canvas {
 
 .hero-text {
   text-align: center;
-  color: #fff;
 }
 
-/* Keep existing navigation and responsive styles */
+.hero-text h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero-text p {
+  font-size: 1.2rem;
+  color: #7f8c8d;
+}
+
+/* Footer */
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 1rem;
+  background: rgba(40, 40, 40, 0.7);
+  text-align: center;
+}
+
+.social-media-icons {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 0;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+  
+  .content-overlay {
+    margin: 50px auto;
+    padding: 1rem;
+  }
+  
+  .hero-text h1 {
+    font-size: 1.8rem;
+  }
+  
+  .hero-text p {
+    font-size: 1rem;
+  }
+}
