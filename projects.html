@@ -2,12 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
     <title>Projects | Data Distributor</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+    <div id="scene-container"></div>
+
     <nav class="nav-banner">
         <div class="nav-links">
             <a href="index.html">Home</a>
@@ -19,25 +21,25 @@
 
     <main class="project-grid">
         <div class="project-card">
-            <h3 class="gradient-text">Decentralized Exchange</h3>
+            <h2 class="gradient-text">Decentralized Exchange</h2>
             <p>AMM protocol built with Solidity and React</p>
             <div class="tech-stack">
                 <span>Solidity</span>
                 <span>React</span>
                 <span>GraphQL</span>
+                <span>Hardhat</span>
             </div>
-            <a href="#" class="repo-link">View Repository →</a>
         </div>
 
         <div class="project-card">
-            <h3 class="gradient-text">NFT Marketplace</h3>
+            <h2 class="gradient-text">NFT Marketplace</h2>
             <p>ERC-721 marketplace with lazy minting</p>
             <div class="tech-stack">
                 <span>IPFS</span>
-                <span>Hardhat</span>
                 <span>TypeScript</span>
+                <span>Node.js</span>
+                <span>Ethers.js</span>
             </div>
-            <a href="#" class="repo-link">View Repository →</a>
         </div>
     </main>
 
@@ -49,5 +51,7 @@
             <i class="fab fa-linkedin"></i>
         </a>
     </footer>
+    
+    <script type="module" src="js/threeScene.js"></script>
 </body>
 </html>

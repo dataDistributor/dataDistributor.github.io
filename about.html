@@ -2,12 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
     <title>About | Data Distributor</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+    <div id="scene-container"></div>
+
     <nav class="nav-banner">
         <div class="nav-links">
             <a href="index.html">Home</a>
@@ -19,14 +21,19 @@
 
     <main class="about-content">
         <div class="glass-panel">
-            <h2 class="gradient-text">Blockchain Architect</h2>
-            <p>With 5+ years in Tech, I specialize in:</p>
-            <ul class="skill-list">
-                <li>Smart Contract Development</li>
-                <li>DeFi Protocol Design</li>
-                <li>Zero-Knowledge Proofs</li>
-                <li>Layer 2 Scaling Solutions</li>
-            </ul>
+            <h1 class="gradient-text">Blockchain Architect</h1>
+            <div class="expertise-item">
+                <h3>Layer 2 Scaling Solutions</h3>
+                <p>Implementation of Optimistic & ZK Rollups</p>
+            </div>
+            <div class="expertise-item">
+                <h3>Smart Contract Development</h3>
+                <p>Expert in ERC standards and protocol design</p>
+            </div>
+            <div class="expertise-item">
+                <h3>DeFi Architecture</h3>
+                <p>Designing secure decentralized financial systems</p>
+            </div>
         </div>
     </main>
 
@@ -38,5 +45,7 @@
             <i class="fab fa-linkedin"></i>
         </a>
     </footer>
+
+    <script type="module" src="js/threeScene.js"></script>
 </body>
 </html>
