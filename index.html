@@ -1,42 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Distributor | Web3 Portfolio</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>dataDistributor - Home</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="scene-container"></div>
+  <div id="loading-overlay">
+    <div class="loader"></div>
+    <p>Initializing visualization...</p>
+  </div>
 
-    <nav class="nav-banner">
-        <div class="nav-links">
-            <a href="/">Home</a>
-            <a href="projects.html">Projects</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
-        </div>
+  <header>
+    <div class="logo">dataDistributor</div>
+    <nav>
+      <ul>
+        <li><button id="dark-mode-toggle" class="dark-mode-button"><i class="fas fa-moon"></i></button></li>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="art-room.html">Art Room</a></li>
+      </ul>
     </nav>
+  </header>
 
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Building Decentralized Futures</h1>
-            <p class="accent-border">Smart Contract Developer<br>& Blockchain Architect</p>
-        </div>
-    </section>
+  <main>
+    <div class="hero-container">
+      <img src="image.png" alt="DataDistributor Platform" class="hero-image">
+      <div class="hero-content">
+        <h1 class="sr-only">Building Decentralized Futures</h1>
+        <p class="hero-subtitle">Smart Contract Developer & Blockchain Architect</p>
+      </div>
+    </div>
+  </main>
 
-    <!-- Social Links -->
-    <footer class="social-footer">
-        <a href="https://github.com/yourusername" class="social-icon">
-            <i class="fab fa-github"></i>
-        </a>
-        <a href="https://linkedin.com/in/yourprofile" class="social-icon">
-            <i class="fab fa-linkedin"></i>
-        </a>
-    </footer>
+  <footer>
+    <ul class="social-media-icons">
+      <li><a href="https://github.com/dataDistributor" target="_blank"><i class="fab fa-github"></i></a></li>
+      <li><a href="https://www.linkedin.com/company/datadistributor" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+    </ul>
+  </footer>
 
-    <!-- Three.js Script -->
-    <script type="module" src="js/threeScene.js"></script>
+  <script src="threejs-config.js"></script>
 </body>
 </html>
