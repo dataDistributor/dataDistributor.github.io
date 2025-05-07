@@ -216,3 +216,18 @@ button[type="submit"]:hover {
         z-index: -1;
     }
 }
+
+.button-link {
+    display: inline-block;
+    margin-top: 1em;
+    padding: 0.5em 1.25em;
+    background-color: #222;
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.button-link:hover {
+    background-color: #444;
+}
