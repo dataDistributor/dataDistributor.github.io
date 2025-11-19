@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
     <title>Contact | Kyle Agostinelli</title>
+    <meta name="description" content="Contact Technical Support Specialist Kyle Agostinelli for remote or on-site support opportunities.">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <div id="scene-container"></div>
 
-    <nav class="nav-banner">
+    <nav class="nav-banner" aria-label="Primary">
         <div class="nav-links">
             <a href="index.html">Home</a>
             <a href="projects.html">Projects</a>
@@ -22,7 +23,7 @@
     <div class="contact-container">
         <h1 class="gradient-text">Get in Touch</h1>
         <p>Available for remote and on-site Technical Support assignments. Typical response time: within 48 hours.</p>
-        <form>
+        <form aria-label="Contact form">
             <div class="form-group">
                 <input type="text" placeholder="Name" required>
             </div>
@@ -35,23 +36,24 @@
             <div class="form-group">
                 <textarea rows="6" placeholder="Message — briefly describe your support need" required></textarea>
             </div>
-            <button type="submit">Send Message</button>
+            <button type="button" onclick="window.location.href='mailto:kyleagostinelli@protonmail.com'">Send Email</button>
         </form>
 
         <div style="margin-top:1rem">
             <a class="button-link" href="resume.html" target="_blank">Download Resume</a>
-            <a class="button-link" href="mailto:your.email@example.com">Email Me</a>
+            <a class="button-link" href="mailto:kyleagostinelli@protonmail.com">Email Me</a>
         </div>
     </div>
 
     <footer class="social-footer">
-        <a href="https://github.com/dataDistributor" class="social-icon">
+        <a href="https://github.com/dataDistributor" class="social-icon" aria-label="GitHub profile">
             <i class="fab fa-github"></i>
         </a>
-        <a href="https://www.linkedin.com/in/kyle-agostinelli-075329237/" class="social-icon">
+        <a href="https://www.linkedin.com/in/kyle-agostinelli-075329237/" class="social-icon" aria-label="LinkedIn profile">
             <i class="fab fa-linkedin"></i>
         </a>
     </footer>
 
 </body>
 </html>
+

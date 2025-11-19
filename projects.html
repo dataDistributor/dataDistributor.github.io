@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
     <title>Projects | Kyle Agostinelli</title>
+    <meta name="description" content="Selected technical support case studies including VPN stability improvements and onboarding automation.">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <div id="scene-container"></div>
 
-    <nav class="nav-banner">
+    <nav class="nav-banner" aria-label="Primary">
         <div class="nav-links">
             <a href="index.html">Home</a>
             <a href="projects.html">Projects</a>
@@ -19,27 +20,49 @@
         </div>
     </nav>
 
-    <main class="project-grid">
-        <div class="project-card">
-            <h2 class="gradient-text">Case Study: VPN Stability for Remote Staff</h2>
-            <p><strong>Problem:</strong> Remote employees experienced frequent VPN disconnects during work hours, impacting productivity.</p>
-            <p><strong>Action:</strong> Collected and analyzed client-side logs and server metrics, identified MTU and keepalive misconfiguration, deployed policy changes and monitoring.</p>
-            <p><strong>Result:</strong> VPN uptime improved to 99.8% and support tickets dropped by 85% over the following month.</p>
-        </div>
+    <main class="project-grid" aria-label="Technical case studies">
+        <article class="project-card">
+            <header class="project-card-header">
+                <h2 class="gradient-text">VPN Stability for Remote Staff</h2>
+                <div class="project-tags">
+                    <span>VPN</span>
+                    <span>Network Troubleshooting</span>
+                    <span>SaaS</span>
+                </div>
+            </header>
+            <p class="project-summary">Stabilized a remote workforce VPN deployment and dramatically reduced disconnect-related tickets.</p>
+            <details class="project-details">
+                <summary aria-label="Expand VPN stability case study">View details</summary>
+                <p><strong>Problem:</strong> Remote employees experienced frequent VPN disconnects during work hours, impacting productivity and increasing ticket volume.</p>
+                <p><strong>Action:</strong> Collected and analyzed client-side logs and server metrics, identified MTU and keepalive misconfiguration, then deployed policy changes and monitoring dashboards.</p>
+                <p><strong>Result:</strong> VPN uptime improved to 99.8% and related support tickets dropped by 85% over the following month.</p>
+            </details>
+        </article>
 
-        <div class="project-card">
-            <h2 class="gradient-text">Case Study: New-hire Onboarding Automation</h2>
-            <p><strong>Problem:</strong> Manual onboarding took ~2 hours per user with frequent configuration inconsistencies.</p>
-            <p><strong>Action:</strong> Built onboarding PowerShell scripts and standardized runbook, integrated steps with ticketing workflow.</p>
-            <p><strong>Result:</strong> Onboarding time reduced to ~20 minutes per user and first-week incidents related to setup dropped 70%.</p>
-        </div>
+        <article class="project-card">
+            <header class="project-card-header">
+                <h2 class="gradient-text">New-hire Onboarding Automation</h2>
+                <div class="project-tags">
+                    <span>Automation</span>
+                    <span>PowerShell</span>
+                    <span>Onboarding</span>
+                </div>
+            </header>
+            <p class="project-summary">Automated user onboarding to reduce setup time and cut down on first-week incident volume.</p>
+            <details class="project-details">
+                <summary aria-label="Expand onboarding automation case study">View details</summary>
+                <p><strong>Problem:</strong> Manual onboarding took ~2 hours per user with frequent configuration inconsistencies across devices and accounts.</p>
+                <p><strong>Action:</strong> Built onboarding PowerShell scripts and a standardized runbook, and integrated steps with the ticketing workflow to ensure consistency.</p>
+                <p><strong>Result:</strong> Onboarding time reduced to ~20 minutes per user and first-week incidents related to setup dropped by 70%.</p>
+            </details>
+        </article>
     </main>
 
     <footer class="social-footer">
-        <a href="https://github.com/dataDistributor" class="social-icon">
+        <a href="https://github.com/dataDistributor" class="social-icon" aria-label="GitHub profile">
             <i class="fab fa-github"></i>
         </a>
-        <a href="https://www.linkedin.com/in/kyle-agostinelli-075329237/" class="social-icon">
+        <a href="https://www.linkedin.com/in/kyle-agostinelli-075329237/" class="social-icon" aria-label="LinkedIn profile">
             <i class="fab fa-linkedin"></i>
         </a>
     </footer>

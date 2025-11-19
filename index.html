@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
     <title>Kyle Agostinelli - Technical Support Specialist</title>
+    <meta name="description" content="Technical Support Specialist with experience across SaaS platforms, networking, and high-volume customer support.">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
     <div id="scene-container"></div>
 
-    <nav class="nav-banner">
+    <nav class="nav-banner" aria-label="Primary">
         <div class="nav-links">
             <a href="index.html">Home</a>
             <a href="projects.html">Projects</a>
@@ -19,20 +21,40 @@
         </div>
     </nav>
 
-    <section class="hero">
-        <h1>Kyle Agostinelli - Technical Support Specialist</h1>
-        <p>Customer-focused IT support: troubleshooting, systems administration, and end-user training. I reduce downtime by quickly diagnosing issues across Windows, macOS, and Linux environments.</p>
+    <main id="main-content">
+    <section class="hero" aria-labelledby="hero-title">
+        <p class="hero-kicker">Technical Support &amp; SaaS Platforms</p>
+        <h1 id="hero-title">Reducing downtime and ticket volume for modern teams.</h1>
+        <p class="hero-subtitle">I help SaaS and connectivity providers keep users online by combining deep technical troubleshooting with clear, empathetic communication.</p>
+
+        <div class="hero-highlights" aria-label="Key results">
+            <div class="hero-highlight">
+                <span class="hero-highlight-label">First-contact resolution</span>
+                <span class="hero-highlight-metric">95%+</span>
+            </div>
+            <div class="hero-highlight">
+                <span class="hero-highlight-label">MTTR reduction</span>
+                <span class="hero-highlight-metric">6h → 2.5h</span>
+            </div>
+            <div class="hero-highlight">
+                <span class="hero-highlight-label">Customer satisfaction</span>
+                <span class="hero-highlight-metric">&gt;95%</span>
+            </div>
+        </div>
+
         <div class="hero-ctas">
-            <a class="button-link" href="resume.html" target="_blank">Download Resume</a>
-            <a class="button-link" href="contact.html">Contact Me</a>
+            <a class="button-link primary" href="resume.html" target="_blank">View Resume</a>
+            <a class="button-link secondary" href="projects.html">View Case Studies</a>
+            <a class="button-link tertiary" href="contact.html">Contact Me</a>
         </div>
     </section>
+    </main>
 
     <footer class="social-footer">
-        <a href="https://github.com/dataDistributor" class="social-icon">
+        <a href="https://github.com/dataDistributor" class="social-icon" aria-label="GitHub profile">
             <i class="fab fa-github"></i>
         </a>
-        <a href="https://www.linkedin.com/in/kyle-agostinelli-075329237/" class="social-icon">
+        <a href="https://www.linkedin.com/in/kyle-agostinelli-075329237/" class="social-icon" aria-label="LinkedIn profile">
             <i class="fab fa-linkedin"></i>
         </a>
     </footer>
