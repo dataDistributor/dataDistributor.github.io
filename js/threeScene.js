@@ -1,16 +1,14 @@
 import * as THREE from 'https://unpkg.com/three@0.158.0/build/three.module.js';
-import { EffectComposer } from 'https://unpkg.com/three@0.158.0/examples/jsm/postprocessing/EffectComposer.js?module';
-import { RenderPass } from 'https://unpkg.com/three@0.158.0/examples/jsm/postprocessing/RenderPass.js?module';
-import { UnrealBloomPass } from 'https://unpkg.com/three@0.158.0/examples/jsm/postprocessing/UnrealBloomPass.js?module';
 
-// Next‑gen data‑flow background using instancing + bloom
+// Data-flow style background using instancing, no external helpers
 const containerElement = document.getElementById('scene-container');
 if (!containerElement) {
   console.warn('No scene container found for Three.js background');
 }
 
+// Scene and camera
 const scene = new THREE.Scene();
-scene.fog = new THREE.FogExp2(0x02030a, 0.02);
+scene.fog = new THREE.FogExp2(0x02030a, 0.018);
 
 const camera = new THREE.PerspectiveCamera(
   55,
@@ -20,12 +18,13 @@ const camera = new THREE.PerspectiveCamera(
 );
 camera.position.set(0, 10, 80);
 
+// Renderer
 const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.outputEncoding = THREE.sRGBEncoding;
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
-renderer.toneMappingExposure = 1.1;
+renderer.toneMappingExposure = 1.05;
 renderer.setClearColor(0x000000, 0);
 
 if (containerElement) {
@@ -36,7 +35,7 @@ if (containerElement) {
 const ambientLight = new THREE.AmbientLight(0x8899ff, 0.6);
 scene.add(ambientLight);
 
-const keyLight = new THREE.DirectionalLight(0xffffff, 1.3);
+const keyLight = new THREE.DirectionalLight(0xffffff, 1.2);
 keyLight.position.set(30, 40, 50);
 scene.add(keyLight);
 
@@ -49,11 +48,11 @@ const coreGeometry = new THREE.IcosahedronGeometry(12, 2);
 const coreMaterial = new THREE.MeshPhysicalMaterial({
   color: 0x7ee0ff,
   metalness: 0.7,
-  roughness: 0.1,
+  roughness: 0.18,
   clearcoat: 1.0,
   clearcoatRoughness: 0.05,
   emissive: 0x0a3e8a,
-  emissiveIntensity: 0.9,
+  emissiveIntensity: 0.7,
   transmission: 0.4,
   thickness: 4
 });
@@ -63,10 +62,10 @@ scene.add(coreMesh);
 // Quality presets for desktop vs mobile
 const isMobile = window.matchMedia('(max-width: 768px)').matches;
 
-const orbitCount = isMobile ? 280 : 540;
-const streamCount = isMobile ? 90 : 160;
+const orbitCount = isMobile ? 260 : 520;
+const streamCount = isMobile ? 80 : 150;
 
-// Orbiting “data nodes” using instancing
+// Orbiting data nodes (instanced spheres)
 const orbitGeometry = new THREE.SphereGeometry(0.7, 12, 12);
 const orbitMaterial = new THREE.MeshStandardMaterial({
   color: 0xffffff,
@@ -79,29 +78,24 @@ orbitMesh.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
 scene.add(orbitMesh);
 
 const orbitData = [];
+const orbitColor = new THREE.Color();
 
-for (let orbitIndex = 0; orbitIndex < orbitCount; orbitIndex += 1) {
+for (let i = 0; i < orbitCount; i += 1) {
   const radius = 18 + Math.random() * 55;
   const verticalOffset = (Math.random() - 0.5) * 24;
   const speed =
     (0.15 + Math.random() * 0.35) * (Math.random() > 0.5 ? 1 : -1);
   const phase = Math.random() * Math.PI * 2;
-  const orbitTilt = new THREE.Euler(
-    THREE.MathUtils.degToRad(-18 + Math.random() * 36),
-    THREE.MathUtils.degToRad(Math.random() * 360),
-    THREE.MathUtils.degToRad(-10 + Math.random() * 20)
-  );
 
   const hue = 0.52 + (radius / 80) * 0.12;
-  const orbitColor = new THREE.Color().setHSL(hue, 0.8, 0.6);
-  orbitMesh.setColorAt(orbitIndex, orbitColor);
+  orbitColor.setHSL(hue, 0.8, 0.6);
+  orbitMesh.setColorAt(i, orbitColor);
 
   orbitData.push({
     radius,
     verticalOffset,
     speed,
-    phase,
-    orbitTilt
+    phase
   });
 }
 
@@ -114,7 +108,7 @@ const streamGeometry = new THREE.BoxGeometry(0.35, 0.35, 3.1);
 const streamMaterial = new THREE.MeshStandardMaterial({
   color: 0xffffff,
   emissive: 0x00f7ff,
-  emissiveIntensity: 1.8,
+  emissiveIntensity: 1.6,
   metalness: 0.3,
   roughness: 0.35
 });
@@ -131,8 +125,8 @@ const streamData = [];
 const streamOriginLeft = new THREE.Vector3(-60, 0, -40);
 const streamOriginRight = new THREE.Vector3(60, 0, -40);
 
-for (let streamIndex = 0; streamIndex < streamCount; streamIndex += 1) {
-  const fromLeft = streamIndex % 2 === 0;
+for (let i = 0; i < streamCount; i += 1) {
+  const fromLeft = i % 2 === 0;
   const basePosition = fromLeft
     ? streamOriginLeft.clone()
     : streamOriginRight.clone();
@@ -143,38 +137,24 @@ for (let streamIndex = 0; streamIndex < streamCount; streamIndex += 1) {
     -4 + Math.random() * 16
   );
 
-  const travelDuration = 4.0 + Math.random() * 4.0;
+  const travelDuration = 3.5 + Math.random() * 4.0;
   const offsetTime = Math.random() * travelDuration;
 
   streamData.push({
     basePosition,
     targetPosition,
     travelDuration,
-    offsetTime,
-    fromLeft
+    offsetTime
   });
 }
-
-// Post‑processing pipeline
-const composer = new EffectComposer(renderer);
-const renderPass = new RenderPass(scene, camera);
-composer.addPass(renderPass);
-
-const bloomPass = new UnrealBloomPass(
-  new THREE.Vector2(window.innerWidth, window.innerHeight),
-  1.35,
-  0.4,
-  0.15
-);
-composer.addPass(bloomPass);
 
 // Interaction state
 const interactionState = {
   pointerX: 0,
   pointerY: 0,
-  smoothCameraX: 0,
-  smoothCameraY: 8,
-  smoothCameraZ: 80
+  cameraX: 0,
+  cameraY: 8,
+  cameraZ: 80
 };
 
 window.addEventListener('pointermove', (event) => {
@@ -186,8 +166,8 @@ window.addEventListener('pointermove', (event) => {
 
 window.addEventListener('scroll', () => {
   const scrollNormalized = window.scrollY / (window.innerHeight * 2);
-  const clampedScroll = THREE.MathUtils.clamp(scrollNormalized, 0, 1);
-  interactionState.smoothCameraZ = 80 - clampedScroll * 22;
+  const clamped = THREE.MathUtils.clamp(scrollNormalized, 0, 1);
+  interactionState.cameraZ = 80 - clamped * 18;
 });
 
 // Resize handling
@@ -199,13 +179,11 @@ function handleResize() {
   camera.updateProjectionMatrix();
 
   renderer.setSize(width, height);
-  composer.setSize(width, height);
-  bloomPass.setSize(width, height);
 }
 
 window.addEventListener('resize', handleResize);
 
-// Animation loop
+// Animation loop setup
 const orbitMatrix = new THREE.Matrix4();
 const orbitPosition = new THREE.Vector3();
 const orbitQuaternion = new THREE.Quaternion();
@@ -232,23 +210,20 @@ function renderFrame() {
   const parallaxStrengthX = 12;
   const parallaxStrengthY = 10;
 
-  const targetCameraX = interactionState.pointerX * parallaxStrengthX;
-  const targetCameraY = 8 - interactionState.pointerY * parallaxStrengthY;
+  const targetX = interactionState.pointerX * parallaxStrengthX;
+  const targetY = 8 - interactionState.pointerY * parallaxStrengthY;
 
-  interactionState.smoothCameraX +=
-    (targetCameraX - interactionState.smoothCameraX) * 0.06;
-  interactionState.smoothCameraY +=
-    (targetCameraY - interactionState.smoothCameraY) * 0.06;
+  interactionState.cameraX += (targetX - interactionState.cameraX) * 0.06;
+  interactionState.cameraY += (targetY - interactionState.cameraY) * 0.06;
 
-  camera.position.x = interactionState.smoothCameraX;
-  camera.position.y = interactionState.smoothCameraY;
-  camera.position.z +=
-    (interactionState.smoothCameraZ - camera.position.z) * 0.06;
+  camera.position.x = interactionState.cameraX;
+  camera.position.y = interactionState.cameraY;
+  camera.position.z += (interactionState.cameraZ - camera.position.z) * 0.06;
   camera.lookAt(0, 0, 0);
 
   // Update orbit instances
-  for (let orbitIndex = 0; orbitIndex < orbitCount; orbitIndex += 1) {
-    const orbitInfo = orbitData[orbitIndex];
+  for (let i = 0; i < orbitCount; i += 1) {
+    const orbitInfo = orbitData[i];
     const angle = orbitInfo.phase + elapsed * orbitInfo.speed;
 
     const baseX = Math.cos(angle) * orbitInfo.radius;
@@ -257,9 +232,9 @@ function renderFrame() {
       Math.sin(elapsed * 0.9 + orbitInfo.phase) * 2.5 +
       Math.sin(elapsed * 1.3 + orbitInfo.phase * 1.7) * 1.1;
 
-    const positionY = orbitInfo.verticalOffset + wobble;
+    const y = orbitInfo.verticalOffset + wobble;
 
-    orbitPosition.set(baseX, positionY, baseZ);
+    orbitPosition.set(baseX, y, baseZ);
 
     orbitEuler.set(
       Math.sin(elapsed * 0.6 + orbitInfo.phase) * 0.5,
@@ -268,16 +243,14 @@ function renderFrame() {
     );
     orbitQuaternion.setFromEuler(orbitEuler);
 
-    orbitScale.set(1, 1, 1);
-
     orbitMatrix.compose(orbitPosition, orbitQuaternion, orbitScale);
-    orbitMesh.setMatrixAt(orbitIndex, orbitMatrix);
+    orbitMesh.setMatrixAt(i, orbitMatrix);
   }
   orbitMesh.instanceMatrix.needsUpdate = true;
 
   // Update streaming packets
-  for (let streamIndex = 0; streamIndex < streamCount; streamIndex += 1) {
-    const packetInfo = streamData[streamIndex];
+  for (let i = 0; i < streamCount; i += 1) {
+    const packetInfo = streamData[i];
 
     const streamTime =
       (elapsed + packetInfo.offsetTime) % packetInfo.travelDuration;
@@ -300,18 +273,19 @@ function renderFrame() {
       streamDirection
     );
 
-    const baseScale = 1 + easedTime * 1.2;
+    const baseScale = 1 + easedTime * 1.0;
     streamScale.set(1, 1, baseScale);
 
     streamMatrix.compose(streamPosition, streamQuaternion, streamScale);
-    streamMesh.setMatrixAt(streamIndex, streamMatrix);
+    streamMesh.setMatrixAt(i, streamMatrix);
   }
   streamMesh.instanceMatrix.needsUpdate = true;
 
-  composer.render();
+  renderer.render(scene, camera);
   requestAnimationFrame(renderFrame);
 }
 
 renderFrame();
 
-console.log('Next‑gen Three.js data‑flow background initialised');
+console.log('Three.js data-flow background initialised (no postprocessing)');
+
